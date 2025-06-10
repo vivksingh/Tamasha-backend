@@ -1,5 +1,6 @@
 const Admin = require('../Models/admin');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 
 async function add_admin(req, res){
     const { username, email, password } = req.body;

@@ -2,11 +2,11 @@ const Event = require('../Models/event');
 
 async function getAllEvents(req, res){
     try{
-        const events = await Events.find({status : true}).sort({created_on : -1});
+        const events = await Event.find({status : true}).sort({created_on : -1});
         res.status(200).json(events);
     }
     catch(err){
-        res.status(500).join({error : err.message});
+        res.status(500).json({error : err.message});
     }
 }
 

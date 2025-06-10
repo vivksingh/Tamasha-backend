@@ -6,4 +6,4 @@ const jwtMiddleware = require('../Middelware/auth');
 router.post('/add-user', jwtMiddleware, adminController.add_admin);
 router.post('/login', adminController.login);
 
-module.export = router;
+module.exports = router;
