@@ -7,4 +7,4 @@ router.get('/getAllEvents', eventController.getAllEvents);
 router.get('/get/:id', eventController.getEvent);
 router.post('/addEvent', jwtMiddleware, eventController.addEvent);
 
-module.export = router;
+module.exports = router;
