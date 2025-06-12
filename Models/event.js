@@ -14,7 +14,8 @@ const eventSchema = new mongoose.Schema({
     name : {
         type : String,
         required : true,
-        trim : true
+        trim : true,
+        unique : true
     },
 
     start_date : {
@@ -49,8 +50,8 @@ const eventSchema = new mongoose.Schema({
         type : String,
         required : true,
         trim : true,
-        match : [/^(https?:\/\/)?([\w\-])+\.{1}([a-zA-Z]{2,63})([\/\w\-.]*)*\/?$/,
-                 'Enter a valid redirection mail'
+        match : [/^https?:\/\/[^\s$.?#].[^\s]*$/,
+                 'Enter a valid redirection url'
     ]},
 
     status : {
