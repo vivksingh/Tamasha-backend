@@ -5,7 +5,7 @@ const Subscriber = require("../Models/subscriber");
 
 async function getAllEvents(req, res){
     try{
-        const events = await Event.find({status : true}).sort({created_on : -1});
+        const events = await Event.find({status : true}).sort({created_on : 1});
         res.status(200).json(events);
     }
     catch(err){
@@ -66,32 +66,39 @@ async function addEvent(req, res){
 
 
 
+
 async function addVipTable(req, res) {
-    try {
-        const {
-            name,
-            email,
-            phone,
-            event,
-            guests,
-            message
-        } = req.body;
+  try {
+    const {
+      name,
+      email,
+      phone,
+      eventType,
+      date,
+      guests,
+      budget,
+      message
+    } = req.body;
 
-        const newVipTable = new VipTable({
-            name,
-            email,
-            phone,
-            event,
-            guests,
-            message
-        });
+    const newVipTable = new VipTable({
+      name,
+      email,
+      phone,
+      eventType,
+      date,
+      guests,
+      budget,
+      message
+    });
 
-        await newVipTable.save();
-        res.status(201).json({ message: "VIP Table request submitted successfully" });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
+    await newVipTable.save();
+    res.status(201).json({ message: "VIP Table request submitted successfully" });
+  } catch (err) {
+    console.error("VIP table save error:", err);
+    res.status(500).json({ error: err.message });
+  }
 }
+
 
 
 
@@ -197,6 +204,16 @@ async function addSubscriber(req, res) {
   }
 }
 
+async function getAllEventsForAdmin(req, res){
+  try{
+    const events = await Event.find().sort({created_on : 1});
+    res.status(200).json(events); 
+  }
+  catch(err){
+    res.status(500).json({error : err.message});
+  }
+}
 
 
-module.exports = { getAllEvents, getEvent, addEvent, addVipTable, addFunctionInquiry, editEvent, addSubscriber }
+
+module.exports = { getAllEvents, getEvent, addEvent, addVipTable, addFunctionInquiry, editEvent, addSubscriber, getAllEventsForAdmin };

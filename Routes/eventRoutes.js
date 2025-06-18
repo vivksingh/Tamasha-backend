@@ -11,5 +11,6 @@ router.post("/edit-event/:id", jwtMiddleware, upload, eventController.editEvent)
 router.post("/subscribe", eventController.addSubscriber);
 router.get('/get/:id', eventController.getEvent);
 router.post('/add-event', jwtMiddleware, upload, eventController.addEvent);
+router.get('/admin-all-events', jwtMiddleware, eventController.getAllEventsForAdmin);
 
 module.exports = router;
