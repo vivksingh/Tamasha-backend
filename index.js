@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 const eventRoutes = require('./Routes/eventRoutes');
 const adminRoutes = require('./Routes/adminRoutes');
+const offerRoutes = require('./Routes/offerRoutes');
 
 const PORT = process.env.PORT || 5000;
 
@@ -18,6 +19,7 @@ app.use(cors());
 // routes
 app.use('/api/event', eventRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/offers', offerRoutes);
 app.use('/uploads', express.static('uploads'));
 
 // MongoDB connection
