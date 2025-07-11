@@ -9,6 +9,7 @@ const eventRoutes = require('./Routes/eventRoutes');
 const adminRoutes = require('./Routes/adminRoutes');
 const offerRoutes = require('./Routes/offerRoutes');
 const careerRoute = require('./Routes/careerRoute');
+const newsRoutes = require('./Routes/newsRoutes');
 
 const PORT = process.env.PORT || 5000;
 
@@ -21,7 +22,8 @@ app.use(cors());
 app.use('/api/event', eventRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/offers', offerRoutes);
-app.use('/api/careers', careerRoute);``
+app.use('/api/careers', careerRoute);
+app.use('/api/news', newsRoutes);
 
 app.use('/uploads', express.static('uploads'));
 

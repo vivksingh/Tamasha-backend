@@ -1,6 +1,6 @@
 const OfferClaim = require("../Models/offerClaim");
 
-exports.  claimOffer = async (req, res) => {
+exports.claimOffer = async (req, res) => {
   try {
     const {
       offer_id,
