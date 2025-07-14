@@ -43,4 +43,14 @@ async function post_news(req, res) {
   }
 }
 
-module.exports = {get_all_news, post_news}
+async function get_news_with_id(req, res) {
+  try {
+    const newsItem = await News.findById(req.params.id);
+    if (!newsItem) return res.status(404).json({ message: "Not found" });
+    res.json(newsItem);
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
+  }
+}
+
+module.exports = {get_all_news, post_news, get_news_with_id}
